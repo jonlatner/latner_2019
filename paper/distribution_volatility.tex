@@ -1,0 +1,182 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{enumerate}
+\usepackage{rotating}
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{parskip}
+\usepackage{endnotes}
+\usepackage{setspace}
+\usepackage{dcolumn} %for use with R package stargazer
+\interfootnotelinepenalty=10000
+\usepackage[top=1in,bottom=1in,left=1in,right=1in]{geometry}
+
+\newcommand{\yoverbrace}[2][\vphantom{\beta_{1pi}T + \mu_{pit}}]{\overbrace{#1#2}}
+
+\newcommand{\lefttext}[1]{\makebox[0pt][l]{#1}}
+
+\usepackage{natbib}
+\usepackage{hyperref}
+\hypersetup{pdfstartpage=1,
+            pdfpagemode=UseNone,
+            pdfstartview=FitH,
+            pdffitwindow=true,
+            urlcolor=blue,
+            bookmarks=false,
+            urlcolor=blue,
+            colorlinks=true,
+            linkcolor=blue,
+            citecolor=blue}
+
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+\usepackage{afterpage}
+\pagestyle{fancy}
+\fancyhead{} % clear all header fields
+\fancyfoot{} % clear all footer fields
+\fancyhead[L]{Latner}
+\fancyhead[C]{Economic insecurity}
+\fancyhead[R]{Page \thepage\  of \pageref*{LastPage}}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\fancypagestyle{firststyle}
+{
+   \fancyhead{}
+   \fancyfoot{}
+}
+
+
+\begin{document}
+
+\afterpage{\cfoot{\thepage}}
+
+{\bf  Revision date:} \today
+
+\begin{center}
+\large Economic insecurity and the distribution of income volatility in the United States \\
+\bigskip
+\normalsize
+Jonathan P. Latner $^{a}$\\
+\end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SECTION
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+{\bf  Abstract}
+
+We examine inequalities in the distribution of income volatility in two ways using data from the Panel Study of Income Dynamics (PSID) in order to improve our understanding of economic insecurity.  First, we use a variance function regression to jointly quantify the relationship between changes in average levels of volatility as they relate to changes in the distribution of volatility. The results indicate that inequalities in the distribution of volatility rise much faster than the overall level of volatility.  Therefore, the concern is less about rising income volatility and more about the characteristics of who experiences high levels of volatility and how those characteristics are changing over time.  Second, we use a linear probability model to better understand changes in who experiences high income volatility over time.  Rising inequalities in the distribution of volatility turn out to be the result of a rising probability of experiencing high volatility among households that would not typically be classified as economically insecure.  
+
+{\bf  Keywords:} income volatility, income mobility, inequality, economic insecurity, standard of living
+
+Please cite as: Latner, Jonathan (2019).  ``Economic insecurity and the distribution of income volatility in the United States.'' \emph{Social Science Research}, 77:193-213
+
+\vfill
+
+------------------------ \\
+\footnotesize
+$^{a}$ Corresponding author: Jonathan P. Latner.  E-mail:  \url{jonathan.latner@uni-bamberg.de}\\
+The author wishes to acknowledge the following individuals for their help throughout the entire process (in alphabetical order):  Hilke Brockmann, David Calnitsky, Matias Cocina, Martin Ehlert, Sophia Fauser, Markus Gangl, Ted Gerber, Pilar Gonalons-Pons, Michael Gebel, Eric Grodsky, Andreas Haupt, Richard Latner, Fabian Ochsenfeld, Ellen Pechman, Sonja Scheuring, Jody Schimek, Xi Song, Tim Smeeding, Leann Tigges, Jonas Vo{\ss}emer, Trevor Young-Hyman, and the anonymous reviewers.
+
+\clearpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% TABLES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Tables}
+
+\begin{table}[!ht]
+    \caption{Descriptive statistics}
+    \begin{center}
+    \resizebox{\textwidth}{!}{\input{../tables/descriptives_large_hh.tex}}
+    \label{descriptives}
+    \end{center}
+\end{table}
+
+\begin{table}[!ht]
+    \caption{Determinants of average level of income volatility and the distribution of volatility, parameter estimates from a variance function regression with fixed effects}
+    \begin{center}
+    \resizebox{\textwidth}{!}{\input{../tables/vfr_fe_hh_period.tex}}
+    \label{vfr_fe}
+    \end{center}
+\end{table}
+
+\clearpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% FIGURES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Figures}
+
+%do stata -b do ../../../../do_files/distribution/graph_inequality.do
+\begin{figure}[htp!]
+    \centering
+    \caption{Index of trends in income volatility and distribution of volatility}
+    \resizebox{.9\textwidth}{!}{\includegraphics{../graphs/volatility_and_inequality_trends_hh.png}}
+    \label{index_volatility}
+\end{figure}
+
+\begin{figure}[htp!]
+    \captionsetup[subfigure]{position=b}
+    \caption{Relationship between the level and distribution of volatility and mobility, as shown in table \ref{vfr_fe}}
+    \subcaptionbox{Average volatility}{\includegraphics[width=0.475\textwidth]{../graphs/margins_betas_fe.png}}
+    \hfill
+    \subcaptionbox{Distribution of volatility}{\includegraphics[width=0.475\textwidth]{../graphs/margins_lambdas_fe.png}}
+    \label{margins_beta_lambda}
+    \\\\
+    \raggedright{\footnotesize{Note: Graph illustrates the impact of a percentage change in income mobility on the level and distribution of income volatility from table \ref{vfr_fe}, if all other continuous variables are at their average values and the categorical variables are at their baseline values.}}
+\end{figure}
+
+\begin{figure}[htp!]
+    \centering
+    \caption{Determinants of experiencing high income volatility over time, predicted estimates from linear probability models with fixed effects, as shown in table \ref{lpm_fe_period}}
+    \resizebox{.9\textwidth}{!}{\includegraphics{../graphs/lpm_fe_pr_high_vol_rel_90.png}}
+    \label{pr_high_vol}
+    \\
+    \raggedright{\footnotesize{Note: Graph illustrates the predicted probability of experiencing high income volatility from model \ref{lpm}, as shown in table \ref{lpm_fe_period}.  The interpretation is change over time within each category in the probability of high income volatility relative to the reference category.  For example, the reference category for always single or always married is change in marital status.}}
+\end{figure}
+
+\begin{figure}[htp!]
+    \centering
+    \caption{Index of trends in income volatility and distribution of volatility}
+    \resizebox{.9\textwidth}{!}{\includegraphics{../graphs/lpm_fe_pr_high_vol_groups_bar_90.png}}
+    \label{pr_high_vol_groups}
+    \\
+    \raggedright{\footnotesize{Note: Graph illustrates the predicted probability of experiencing high income volatility over time by household characteristics from linear probability models with fixed effects, as shown in table \ref{lpm_fe_period}, which is derived from model \ref{lpm_fe_period}.  Controlling for gender, race, age, children in the household, self-employment, and mobility, which are set to their baseline values, ``Secure HH'' is defined as a household that is always married, has a high level of education ($>$ HS), is in the top income quartile, and never unemployed.  ``Insecure HH'' is defined as a household that are always single, has a low level of education ($<$ HS), is in the bottom income quartile, and has experienced unemployment.}}
+\end{figure}
+
+
+\clearpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% APPENDIX
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\appendix
+\setcounter{table}{0}
+\setcounter{figure}{0}
+\renewcommand*\thetable{\Alph{section}.\arabic{table}}
+\renewcommand*\thefigure{\Alph{section}.\arabic{figure}}
+\section{Appendix}
+\label{appendix_a}
+
+\begin{table}
+    \caption{Determinants of experiencing high income volatility over time, parameter estimates from a linear probability model with fixed effects, as shown in figure \ref{pr_high_vol}}
+
+\begin{center}
+\begin{minipage}[t]{.41\linewidth}
+    \vspace{0pt}
+    \resizebox{\textwidth}{!}{\input{../tables/lpm_fe_hh_period_part_1_90.tex}}
+\end{minipage}%
+\begin{minipage}[t]{.48\linewidth}
+    \vspace{0pt}
+    \resizebox{\textwidth}{!}{\input{../tables/lpm_fe_hh_period_part_2_90.tex}}
+\end{minipage}%
+\end{center}
+
+\label{lpm_fe_period}
+\end{table}
+
+
+\end{document}
